@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="estilos.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <?php
@@ -23,18 +24,19 @@ $nombre= "centro3";
 #conexion
 $conexion = new mysqli($host,$user,$contra,$nombre);
 
-
 #comprobar si se produce un error
 if ($conexion->connect_error) {
     die ("Error al conectar a la base de datos");
 }
 $sql="SELECT*FROM alumno";
 $resultado=$conexion->query($sql);
-echo  '<h3 class="card-title">Alumnos</h3><br>';
+echo  '<header class="header-1>"<h3 class="card-title-1">Alumnos</h3></header><br>';
 
 while ($fila=$resultado->fetch_assoc()) {
   #imprimir los datos de cada fila
-  echo '<div class="row">
+  echo '
+  <header class="header-2">
+  <div class="row">
   <div class="col-12">
     <div class="card">
       <div class="card-header">
@@ -72,8 +74,44 @@ while ($fila=$resultado->fetch_assoc()) {
     </div>
    
   </div>
-</div>';
+</div>
+</header>';
 }
+
+echo '<div class="formulario">
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-6">
+        <!-- general form elements -->
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Nuevo alumno</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="exampleInputEmail1">ID</label>
+                <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Ingresar ID...">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">ID Alumno</label>
+                <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Ingresar ID Alumno...">
+              </div>
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary">Subir</button>
+            </div>
+          </form>
+        </div>
+        </div> aas';
+        
+
 
 $conexion->close();
 ?>
@@ -88,7 +126,3 @@ $conexion->close();
 </body>
 </html>
 
-class alumno extends persona{
-    public $id_alumno;
-    public $id_persona;
-}
